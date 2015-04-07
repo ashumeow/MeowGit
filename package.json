@@ -1,6 +1,6 @@
 {
-  "name": "MeowRTC",
-  "version": "v0.0.0",
+  "name": "MeowGit",
+  "version": "v0.0.1",
   "description": "A Simple Git GUI built in Javascript and Go.",
   "license": "Apache License 2.0",
   "repository": "ashumeow/MeowGit",
