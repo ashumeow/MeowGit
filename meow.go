@@ -14,6 +14,38 @@ import (
 )
 */
 
+/*
+HELPER --- https://golang.org/src/text/template/helper.go
+
+func parseFiles(t *Template, filenames ...string) (*Template, error) {
+	if len(filenames) == 0 {
+		return nil, fmt.Errorf("template: no files named in call to ParseFiles")
+	}
+	for _, filename := range filenames {
+		b, err := ioutil.ReadFile(filename)
+ 		if err != nil {
+			return nil, err
+		}
+		s := string(b)
+		name := filepath.Base(filename)
+		var tmpl *Template
+		if t == nil {
+			t = New(name)
+		}
+		if name == t.Name() {
+		tmpl = t
+			else {
+				tmpl = t.New(name)
+			}
+			_, err = tmpl.Parse(s)
+			if err != nil {
+				return nil, err
+			}
+		}
+	return t, nil
+}
+*/
+
 func base(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
 		// add something
@@ -21,9 +53,7 @@ func base(w http.ResponseWriter, r *http.Request) {
 }
 
 func commits(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
+	// add something
 }
 
 func status(w http.ResponseWriter, r *http.Request) {
