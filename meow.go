@@ -6,6 +6,7 @@ import (
 )
 
 type Template struct {
+	//io.Writer
 	// add something
 }
 
@@ -19,10 +20,11 @@ func base(w http.ResponseWriter, r *http.Request) {
 
 func commits(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		//commit := pushCommits()
-		//t := template.New("_commits.html")
+		//t, w := template.ParseFiles("_commits.html")
+		t := template.New("_commits.html")
 		t, r := template.ParseFiles("_commits.html")
 		t.Execute(w, r)
+		//io.Writer.Write(w)
 	}
 }
 
@@ -50,7 +52,7 @@ func diff(w http.ResponseWriter, r *http.Request) {
 
 func pull(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		//remote = data['remote']
+		//remote := data('remote')
 		//branch = data['branch']
 	}
 }
