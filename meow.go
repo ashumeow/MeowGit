@@ -2,69 +2,43 @@ package main
 
 import (
 	"net/http"
+	"text/template"
 )
 
-/*
-import (
-	"os"
-	"github.com/russross/blackfriday"
-	"path/filepath"
-	"io/ioutil"
-	"fmt"
-)
-*/
-
-/*
-HELPER --- https://golang.org/src/text/template/helper.go
-
-func parseFiles(t *Template, filenames ...string) (*Template, error) {
-	if len(filenames) == 0 {
-		return nil, fmt.Errorf("template: no files named in call to ParseFiles")
-	}
-	for _, filename := range filenames {
-		b, err := ioutil.ReadFile(filename)
- 		if err != nil {
-			return nil, err
-		}
-		s := string(b)
-		name := filepath.Base(filename)
-		var tmpl *Template
-		if t == nil {
-			t = New(name)
-		}
-		if name == t.Name() {
-		tmpl = t
-			else {
-				tmpl = t.New(name)
-			}
-			_, err = tmpl.Parse(s)
-			if err != nil {
-				return nil, err
-			}
-		}
-	return t, nil
+type Template struct {
+	// add something
 }
-*/
 
 func base(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		// add something
+		//t := template.New("base.html")
+		t, r := template.ParseFiles("base.html")
+		t.Execute(w, r)
 	}
 }
 
 func commits(w http.ResponseWriter, r *http.Request) {
-	// add something
+	if(r.URL.Path[1:] == "") {
+		//commit := pushCommits()
+		//t := template.New("_commits.html")
+		t, r := template.ParseFiles("_commits.html")
+		t.Execute(w, r)
+	}
 }
 
 func status(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		// add something
+		//t := template.New("_status.html")
+		t, r := template.ParseFiles("_status.html")
+		t.Execute(w, r)
 	}
 }
 
 func details(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		// add something
+		//t := template.New("_details.html")
+		t, r := template.ParseFiles("_details.html")
+		t.Execute(w, r)
 	}
 }
 
