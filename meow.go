@@ -14,6 +14,12 @@ import (
 )
 */
 
+func base(w http.ResponseWriter, r *http.Request) {
+	if(r.URL.Path[1:] == "") {
+		// add something
+	}
+}
+
 func commits(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
 		// add something
@@ -152,6 +158,7 @@ func main() {
 
 	// Adding function handlers
 	// For Testing the Go Build
+	http.HandleFunc("/static/templates/base.html", base)
 	http.HandleFunc("/static/templates/_commits.html", commits)
 	http.HandleFunc("/static/templates/_status.html", status)
 	http.HandleFunc("/static/templates/_details.html", details)
