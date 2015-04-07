@@ -140,23 +140,22 @@ func only_server(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func terminate_gitj_sig(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
+func terminate_gitj_sig() {
+	//terminate_gitj()
 }
 
 func terminate_gitj(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
+	//exit()
 }
 
 func main() {
 
 	// Adding function handlers
 	// For Testing the Go Build
-	http.HandleFunc("/static/templates/_commits.html", commits);
+	http.HandleFunc("/static/templates/_commits.html", commits)
+	http.HandleFunc("/static/templates/_status.html", status)
+	http.HandleFunc("/static/templates/_details.html", details)
+
 
 	// TODO: Add more...
 
