@@ -1,0 +1,17 @@
+{
+  "name": "MeowRTC",
+  "version": "v0.0.0",
+  "description": "A Simple Git GUI built in Javascript and Go.",
+  "license": "Apache License 2.0",
+  "repository": "ashumeow/MeowGit",
+  "author": {
+    "name": "Aswini S",
+    "github": "ashumeow",
+    "twitter": "@ashumeow",
+    "email": "ashumeow@live.com",
+    "url": "http://windowsgeekpro.in"
+  },
+  "files": [
+    "static/script/git.js"
+  ]
+}
