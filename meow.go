@@ -50,13 +50,15 @@ func diff(w http.ResponseWriter, r *http.Request) {
 
 func pull(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		// add something
+		//remote = data['remote']
+		//branch = data['branch']
 	}
 }
 
 func push(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
-		// add something
+		//remote = data['remote']
+		//branch = data['branch']
 	}
 }
 
@@ -68,6 +70,7 @@ func checkout(w http.ResponseWriter, r *http.Request) {
 
 func create_branch(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
+		//name = data['name']
 		// add something
 	}
 }
@@ -80,12 +83,14 @@ func diff_stat(w http.ResponseWriter, r *http.Request) {
 
 func stage(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
+		//path = data['path']
 		// add something
 	}
 }
 
 func unstage(w http.ResponseWriter, r *http.Request) {
 	if(r.URL.Path[1:] == "") {
+		//path = data['path']
 		// add something
 	}
 }
