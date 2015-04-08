@@ -8,20 +8,33 @@ import (
 	"strings"
 )
 
+/*
 // $git clone https://github.com/go-mgo/mgo.git
-// using v2 == unstable version
+// using v2 == stable version
 import (
 	"MeowGit/mgo"
 	"MeowGit/mgo/bson"
 )
+*/
 
 // MeowGit Packages
 // Private packages --- Not Opensourced yet
 import (
-	"MeowGit/commits"
 	"MeowGit/users"
 	"MeowGit/cache"
 )
+/*
+import (
+	"MeowGit/commits"
+)
+*/
+
+type Page struct {
+	Title    string
+	Body     template.HTML
+	UserData template.HTML
+	Bar      template.HTML
+}
 
 // Page Loading
 func loadPage(title string, r *http.Request) (*Page, error) {
