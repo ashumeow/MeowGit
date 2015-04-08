@@ -1,174 +1,81 @@
 package main
 
+// GO Packages
 import (
 	"net/http"
-	"text/template"
+	"html/template"
+	"io/ioutil"
+	"strings"
 )
 
-type Template struct {
-	// add something
+/*
+// $git clone https://github.com/go-mgo/mgo.git
+// using v2 == stable version
+import (
+	"MeowGit/mgo"
+	"MeowGit/mgo/bson"
+)
+*/
+
+// MeowGit Packages
+// Private packages --- Not Opensourced yet
+import (
+	"MeowGit/users"
+	"MeowGit/cache"
+)
+/*
+import (
+	"MeowGit/commits"
+)
+*/
+
+type Page struct {
+	Title    string
+	Body     template.HTML
+	UserData template.HTML
+	Bar      template.HTML
 }
 
-func base(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		//t := template.New("base.html")
-		t, r := template.ParseFiles("base.html")
-		t.Execute(w, r)
+// Page Loading
+func loadPage(title string, r *http.Request) (*Page, error) {
+
+	filename, option, usr, bar := user.LoadUserInfo(title, r)
+	body, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, err
 	}
+
+	return &Page{Title: title, Body: template.HTML(body), UserData: (template.HTML(usr) + template.HTML(option)), Bar: template.HTML(bar)}, nil
 }
 
-func commits(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		//commit := pushCommits()
-		//t := template.New("_commits.html")
-		t, r := template.ParseFiles("_commits.html")
-		t.Execute(w, r)
+// Showing a specific page
+func viewHandler(w http.ResponseWriter, r *http.Request) {
+	
+	title := r.URL.Path[len("/"):]
+	p, err := loadPage(title, r)
+
+	z := strings.Split(title, "/")
+	if z[0] == "commits" {
+		http.ServeFile(w, r, title)
+		return
 	}
-}
 
-func status(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		//t := template.New("_status.html")
-		t, r := template.ParseFiles("_status.html")
-		t.Execute(w, r)
+	if err != nil && !cookies.IsLoggedIn(r) {
+		http.Redirect(w, r, "/base", http.StatusFound)
+		return
+	} else if err != nil { 
+		http.Redirect(w, r, "/_commits", http.StatusFound)
+		return
 	}
-}
 
-func details(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		//t := template.New("_details.html")
-		t, r := template.ParseFiles("_details.html")
-		t.Execute(w, r)
-	}
-}
-
-func diff(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func pull(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func push(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func checkout(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func create_branch(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func diff_stat(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func stage(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func unstage(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func get_heads_with_commit(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func get_branches_in_remote(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func merge(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func open(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func run(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func stop(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func stopped(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func exit(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func only_server(w http.ResponseWriter, r *http.Request) {
-	if(r.URL.Path[1:] == "") {
-		// add something
-	}
-}
-
-func terminate_gitj_sig() {
-	//terminate_gitj()
-}
-
-func terminate_gitj(w http.ResponseWriter, r *http.Request) {
-	//exit()
+	t, _ := template.ParseFiles("_status.html")
+	t.Execute(w, p)
 }
 
 func main() {
 
 	// Adding function handlers
-	// For Testing the Go Build
-	http.HandleFunc("/static/templates/base.html", base)
-	http.HandleFunc("/static/templates/_commits.html", commits)
-	http.HandleFunc("/static/templates/_status.html", status)
-	http.HandleFunc("/static/templates/_details.html", details)
-
-
-	// TODO: Add more...
+	http.HandleFunc("/", viewHandler)
 
 	// Event Listener
     http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))
