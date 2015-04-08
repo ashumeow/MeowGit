@@ -3,7 +3,7 @@
 <br>
 <b>Some corrections:-</b> <br>
 Inside <code>mgo</code><br>
-Remove some <code>mgo based import files</code> and add this instead. <br>
+<b>Remove <code>"only mgo based import files"</code> in <code>import</code></b> and add this instead. <br>
 [1] <code>auth.go</code> <br>
 ```go
 import (
