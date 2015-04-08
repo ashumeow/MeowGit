@@ -10,7 +10,8 @@ Cloning stable repo:- <br>
 Clone latest branch:- <br>
 <code>$git clone https://github.com/ashumeow/MeowGit.git [branch name] --single-branch</code><br> <br>
 Testing the build:- <br>
-<b>Build status for [v0.1.1]:-</b> Unstable --- <code>MeowGit Packages aren't added here yet</code><br>
+<b>Build status for [v0.1.1] if cloned and tested:-</b> Unstable --- <code>MeowGit Packages aren't added here yet. It will be opensourced soon after some alterations.</code><br>
+<b>Build status</b> (included MeowGit package files) --- Stable! <br>
 <code>$cd MeowGit</code><br>
 <code>$go build</code><br>
 <code>$./MeowGit</code><br>
