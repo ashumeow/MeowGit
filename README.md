@@ -1,7 +1,4 @@
 # MeowGit
-[![Build Status][travis-image]][travis-url]
-[travis-url]: https://travis-ci.org/ashumeow/MeowGit
-[travis-image]: https://travis-ci.org/ashumeow/MeowGit.svg?branch=master
 MeowGit is a Simple Git GUI built in Javascript and Go.
 <br><br>
 <code>Clone it</code> inside <code>$GOPATH</code><br>
@@ -15,4 +12,4 @@ Testing the build:- <br>
 <code>$./MeowGit</code><br>
 Server running in <code>localhost:8080</code><br>
 <br>
-<b>Status:</b> Under-Development
+<b>Status:</b> Completed
