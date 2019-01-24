@@ -1,7 +1,6 @@
 # MeowGit
 MeowGit is a Simple Git GUI built in Javascript and Go.
 <br><br>
-<code>Clone it</code> inside <code>$GOPATH</code><br>
 Cloning stable repo:- <br>
 <code>$git clone https://github.com/ashumeow/MeowGit.git</code> <br>
 Clone latest branch:- <br>
