@@ -10,8 +10,8 @@ import (
 
 // MeowGit Packages
 /* Also, includes
-// $git clone https://github.com/go-mgo/mgo.git
-// using v2 == stable version
+// $git clone https://github.com/ashumeow/mgo.git
+// using v2.1 == stable version
 */
 import (
 	"MeowGit/users"
@@ -50,14 +50,14 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err != nil && !cookies.IsLoggedIn(r) {
-		http.Redirect(w, r, "/base", http.StatusFound)
+		http.Redirect(w, r, "static/templates/base.html", http.StatusFound)
 		return
 	} else if err != nil { 
-		http.Redirect(w, r, "/_commits", http.StatusFound)
+		http.Redirect(w, r, "static/templates/_commits.html", http.StatusFound)
 		return
 	}
 
-	t, _ := template.ParseFiles("_status.html")
+	t, _ := template.ParseFiles("static/templates/_status.html")
 	t.Execute(w, p)
 }
 
