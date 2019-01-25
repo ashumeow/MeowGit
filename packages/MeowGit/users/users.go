@@ -2,8 +2,8 @@ package user
 
 import (
 	"fmt"
-	"MeowGit/mgo"
-	"MeowGit/mgo/bson"
+	"mgo"
+	"mgo/bson"
 	"net/http"
 	"os"
 	"strings"

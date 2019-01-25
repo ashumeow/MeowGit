@@ -3,8 +3,8 @@ package commits
 import (
 
 	"fmt"
-	"MeowGit/mgo"
-	"MeowGit/mgo/bson"
+	"mgo"
+	"mgo/bson"
 )
 
 type Commit struct {

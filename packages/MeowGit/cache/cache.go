@@ -2,8 +2,8 @@ package cookies
 
 import (
 	"fmt"
-	"MeowGit/mgo"
-	"MeowGit/mgo/bson"
+	"mgo"
+	"mgo/bson"
 	"net/http"
 	"strings"
 	"time"
