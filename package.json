@@ -1,6 +1,6 @@
 {
   "name": "MeowGit",
-  "version": "v0.2.7",
+  "version": "v0.2.8",
   "description": "A Simple Git GUI built in Javascript and Go.",
   "license": "Apache License 2.0",
   "repository": "ashumeow/MeowGit",
