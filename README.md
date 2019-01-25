@@ -9,4 +9,3 @@ Testing the build:- <br>
 <code>$./MeowGit</code><br>
 Server running in <code>localhost:8080</code><br>
 <br>
-<b>Status:</b> Completed
